@@ -4,12 +4,13 @@ var  http = require('http')
     ,sys = require('sys')
     ,io = require('./lib/socket.io-node/lib/socket.io');
     
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(80, "127.0.0.1");
-console.log('Server running at http://127.0.0.1:8124/');
+    var webserver = http.createServer(function (req, res) {
+      res.writeHead(200, { "Content-Type": "text/plain" })
+      res.end("Hello world\n");
+    });
 
+    webserver.listen(80);
+    
 send404 = function(res){
   res.writeHead(404);
   res.write('404');
