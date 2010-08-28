@@ -4,9 +4,11 @@ var  http = require('http')
     ,sys = require('sys')
     ,io = require('./lib/socket.io-node/lib/socket.io');
     
-var WEBSERVER_PORT = (__filename == '/Users/fabricio/trampos/knockout/server.js')?'8082':'80';
+var  hosted_on_joyent = /\/home\/node\/node\-service\/releases\/[^\/]*\/server.js/.test(__filename)
+    ,WEBSERVER_PORT = hosted_on_joyent ? '80':'8082';
 
 console.log(__filename);
+console.log(WEBSERVER_PORT);
 
 var webserver = http.createServer(function (req, res) {
   var path = url.parse(req.url).pathname;
@@ -31,7 +33,7 @@ var webserver = http.createServer(function (req, res) {
   // res.end("Hello world\n");
 });
 
-webserver.listen(8082);
+webserver.listen(WEBSERVER_PORT);
 
 
 // helpers
