@@ -15,15 +15,16 @@
 var resolutionHeight;
 var resolutionWidth;
  
+
 function WKTouch(node, options) {
 
 	this.node = typeof node == 'object' ? node : document.getElementById(node);
 
 	this.options = {
-		dragable : true,
-		scalable : true,
-		rotatable : true,
-		opacity : true
+		dragable : false,
+		scalable : false,
+		rotatable : false,
+		opacity : false
 	}
     
 	// User defined options
@@ -35,7 +36,7 @@ function WKTouch(node, options) {
 }
 
 //static property to store the zIndex for an element
-WKTouch.zIndexCount = 1;
+//WKTouch.zIndexCount = 1;
         
 //touch event handler
 WKTouch.prototype.handleEvent = function (e) {
@@ -63,7 +64,7 @@ WKTouch.prototype.init = function () {
 WKTouch.prototype.onTouchStart = function (e) {
     e.preventDefault();
     //bring item to the front
-    this.node.style.zIndex = WKTouch.zIndexCount++;
+    //this.node.style.zIndex = WKTouch.zIndexCount++;
     //drag event
     if ((e.targetTouches.length === 1) && (this.options.dragable)) { 
         //get starting coordinates
@@ -103,7 +104,6 @@ WKTouch.prototype.onTouchMove = function (e) {
             myTransform += "scale(" + (this.scale * e.scale) + ")";
         } 
         if (this.options.rotatable) {
-			this.gesture = false;
             myTransform += "rotate(" + ((this.rotation + e.rotation) % 360) + "deg)";
         }
         this.node.style.webkitTransform = myTransform;
@@ -157,7 +157,6 @@ WKTouch.prototype.onTouchCancel = function (e) {
 };
 
 
-
 //get screen resolution
 function resolu() {
 	
@@ -182,3 +181,15 @@ function resolu() {
 	return false;
 }
 
+function center(element, h, w){
+	elementocentral = document.getElementById(element);
+	elementoHalfHeight = h; //elementocentral.style.height/2;
+	elementoHalfWidth = w; //elementocentral.style.width;
+	//console.log(elementoHalfWidth);
+
+	elementocentral.style.left = ((resolutionWidth/3)-elementoHalfWidth)+'px';
+	elementocentral.style.top = ((resolutionHeight/3)-elementoHalfHeight)+'px';
+	
+	//console.log(elementocentral.style.top);
+	
+}
