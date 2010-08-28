@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="WKTouchStyles.css" media="screen"/>
+<script type="text/javascript" src="WKTouch.js"></script>
+<script type="text/javascript"> 
+window.onload = function() {
+    		
+	//prevent default document scrolling
+	document.addEventListener('touchmove', function(e) {	
+		e.preventDefault();
+	}, true);
+			
+	//first instance
+	//var element1 = new WKTouch('element1').init();
+	
+	//second instance
+	//var element2 = new WKTouch('element2').init();
+
+	//third instance
+	//var element3 = new WKTouch('element3').init();
+
+	//fourth instance
+	//var element4 = new WKTouch('element4').init();
+	
+	/*you can also define optional parameters, like so*/
+	var element3 = new WKTouch(
+	'element3', {
+		'dragable':false,
+		'scalable':false,
+		'rotatable': true,
+    	'opacity':true
+	}).init();
+};
+</script>
+</head>
+<body id="wrapper">
+	<!-- <div class="touch" id="element1"></div> -->
+	<!-- <div class="touch" id="element2"></div> -->
+	<div class="touch" id="element3"><img src="img/knob-teste.png" width="400" height="400" alt="Knob Teste"></div>
+	<!-- <div class="touch" id="element4"></div> -->
+	<!-- <div id="debug">test</div> -->
+	
+	
+<script type="text/javascript"> 	
+	resolu();
+	
+	elementocentral = document.getElementById("element3");
+	elementoHalfHeight = 200; //elementocentral.style.height/2;
+	elementoHalfWidth = 200; //elementocentral.style.width;
+	console.log(elementoHalfWidth);
+
+	elementocentral.style.left = ((resolutionWidth/2)-elementoHalfWidth)+'px';
+	elementocentral.style.top = ((resolutionHeight/2)-elementoHalfHeight)+'px';
+	
+	console.log(elementocentral.style.top);
+	
+	
+	
+</script>
+</body>
+</html>

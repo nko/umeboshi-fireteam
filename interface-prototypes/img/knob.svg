@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink" onload="init()"  viewBox="0 0 1000 1000" stroke="black" stroke-width="2">
+ <defs>
+ <linearGradient id="lg1" x1="1" y1="0" x2="0" y2="0.5">
+ <stop offset="0" stop-color="grey"/>
+ <stop offset="1" stop-color="white"/>
+ </linearGradient>
+ <linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1">
+ <stop offset="0" stop-color="grey"/>
+ <stop offset="0.5" stop-color="grey"/>
+
+ <stop offset="1" stop-color="grey"/>
+ </linearGradient>
+ </defs>
+ <circle cx="350" cy="350" r="200"/>
+ <rect id="rect" fill="rgb(0,0,0)" x="0" y="0" width="1200" height="700"/>
+ <rect id="rect" fill="green" x="0" y="700" width="1200" height="700"/>
+  <script xlink:href="gsc.js"/>
+  <script xlink:href="knob.js"/>
+  <script>
+
+var R=0
+var G=0
+var B=0
+  
+  function setColorR(v){
+  var re=document.getElementById("rect")
+  R=Math.floor(255*v/360)
+  re.setAttribute("fill","rgb("+R+","+G+","+B+")")
+  document.getElementById("txR").firstChild.nodeValue=R
+  }
+  function setColorG(v){
+  var re=document.getElementById("rect")
+  G=Math.floor(255*v/360)
+  re.setAttribute("fill","rgb("+R+","+G+","+B+")")
+  document.getElementById("txG").firstChild.nodeValue=G
+  }
+  function setColorB(v){
+  var re=document.getElementById("rect")
+  B=Math.floor(255*v/360)
+  re.setAttribute("fill","rgb("+R+","+G+","+B+")")
+  document.getElementById("txB").firstChild.nodeValue=B
+  }
+    function setColorA(v){
+  var re=document.getElementById("rect")
+
+document.getElementById("txA").firstChild.nodeValue=Math.floor(1000*v/360)/1000
+  
+  re.setAttribute("opacity",v/360)
+  } 
+  function init(){
+  var kno= new knob(100,850,80,60,55,80,-5,0,0,15,15,setColorR)
+ document.documentElement.appendChild(kno.svg)
+
+  var kno= new knob(350,850,90,65,55,65,-2,0,0,5,25,setColorG)
+ document.documentElement.appendChild(kno.svg)
+
+  var kno= new knob(600,850,90,80,50,45,-2,0,0,0,15,setColorB)
+ document.documentElement.appendChild(kno.svg)
+ 
+   var kno= new knob(850,850,90,70,45,35,-2,0,0,10,15,setColorA)
+ document.documentElement.appendChild(kno.svg)
+  }
+  </script>
+
+
+
+<g pointer-events="none">
+<g font-size="40">
+<text fill="rgb(0,0,0)"  y="740" x="100" text-anchor="middle">
+RED
+</text>
+<text fill="rgb(0,0,0)"  y="740" x="350" text-anchor="middle">
+GREEN
+</text>
+<text fill="rgb(0,0,0)"  y="740" x="600" text-anchor="middle">
+BLUE
+</text>
+<text fill="rgb(0,0,0)"  y="740" x="850" text-anchor="middle">
+
+ALPHA
+</text>
+</g>
+
+<g font-size="40">
+<text fill="rgb(0,0,0)" id="txR" y="990" x="100" text-anchor="middle">
+0
+</text>
+<text fill="rgb(0,0,0)" id="txG" y="990" x="350" text-anchor="middle">
+0
+</text>
+<text fill="rgb(0,0,0)" id="txB" y="990" x="600" text-anchor="middle">
+0
+</text>
+<text fill="rgb(0,0,0)" id="txA" y="990" x="850" text-anchor="middle">
+0
+</text>
+
+</g>
+</g>
+</svg>
