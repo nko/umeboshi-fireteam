@@ -4,7 +4,7 @@ var http = require('http'),
 		io = require('./lib/socket.io-node/lib/socket.io'),
 		sys = require('sys'),
 		
-// something to update joyent git
+// something to update joyent git 2
 		
 send404 = function(res){
 	res.writeHead(404);
