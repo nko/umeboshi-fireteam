@@ -56,8 +56,8 @@ function newChannel(res, path, pattern){
       break;
     case '.txt':
     default:
-      res.writeHead(200, { "Content-Type": "text/plain" })
-      res.end("your blurb is "+blurb);
+      res.writeHead(200, { "Content-Type": "text/html" })
+      res.end('your blurb is <a href="/'+blurb+'">'+blurb+'</a>');
       break;
   }
   return true;
