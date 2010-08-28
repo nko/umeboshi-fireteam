@@ -1,0 +1,11 @@
+External Libraries, inspiration and code borrowing
+
+* Socket.io
+** http://github.com/LearnBoost/Socket.IO-node
+** Guillermo Rauch
+** MIT License
+
+* HTML5 Boilerplate
+** http://github.com/paulirish/html5-boilerplate
+** Paul Irish and Divya Manian 
+** Public Domain 
