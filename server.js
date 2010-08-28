@@ -5,7 +5,7 @@ var  http = require('http')
     ,io = require('./lib/socket.io-node/lib/socket.io');
     
 var  hosted_on_joyent = /\/home\/node\/node\-service\/releases\/[^\/]*\/server.js/.test(__filename)
-    ,WEBSERVER_PORT = hosted_on_joyent ? '80':'8082';
+    ,WEBSERVER_PORT = hosted_on_joyent ? 80:8082;
 
 console.log(__filename);
 console.log(WEBSERVER_PORT);
