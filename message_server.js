@@ -1,19 +1,13 @@
 var  http = require('http')
     ,url = require('url')
     ,fs = require('fs')
-    ,sys = require('sys')
+    ,sys = require('sys');
 
-// server.listen();
-    
-// socket.io, I choose you
-// simplest chat application evar
-
-Channel = function() {
-	
+Channel = function(port) {
+	this.port = port;
 	server = createChannel();
-	server.listen(8080);
+	server.listen(port);
 	bindEventHandlers(server);
-	
 	
 	function createChannel() {
 		return http.createServer(function(req, res){
@@ -60,5 +54,7 @@ Channel = function() {
 	}
 }
 
+Channel.prototype.port = 0;
 
-new Channel();
+channel = new Channel(8080);
+console.log("Channel started at port "+channel.port);
