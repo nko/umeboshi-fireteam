@@ -97,7 +97,8 @@ body{
   font-family: "Trebuchet MS", sans;
 }
 #ume-ballon hr{
-  border:1px dashed #a19878;
+  border:none;
+  border-top:1px dashed #a19878;
   margin-top:1em;
   margin-bottom:1em;
 }
