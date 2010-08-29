@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="main.css">  
+</head>
+
+<body onload="init()">
+  
+  <div class="ume-group">
+    <div class="ume-module" id="video-display">
+      <video width="640" height="360" controls preload autobuffer id="main-video">
+        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-mp424-272.MP4" type="video/mp4" /><!-- WebKit video    -->
+        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-webm24-272.WEBM" type='video/webm; codecs="vp8.0, vorbis"' /> 
+        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-ogv24-272.OGV" type="video/ogg" /><!-- Firefox / Opera -->
+      </video>
+    </div>
+  </div>
+  <div class="ume-ribbon"><img src="sliceMe.png" /></div>
+  <script src="jquery-1.4.2.min.js"></script>
+  <script>
+
+function init(){
+  console.log('init')
+}
+
+function channelReady(channel){
+  console.log('we have a channel, its name is: '+channel.channel_key);
+}
+
+  </script>
+  <script src="main.js"></script>
+  <script src="/channel/new.json?callback=channelReady"></script>
+</body>
+</html>
