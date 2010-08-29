@@ -15,7 +15,7 @@ var  channel_key
 function init(){
   console.log('init')
   console.log(domain_name)
-  document.getElementById('testlink').addEventListener('click', pubTest, false)
+  //document.getElementById('testlink').addEventListener('click', pubTest, false)
   pubsub_client = new Faye.Client(pubsub_server_url+'/pubsubhub', {
       timeout: 120
   });
