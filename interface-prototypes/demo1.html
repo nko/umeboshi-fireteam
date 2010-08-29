@@ -15,25 +15,38 @@ window.onload = function() {
 		e.preventDefault();
 	}, true);
 			
-	//first instance
-	//var element1 = new WKTouch('element1').init();
+	var knob1 = new WKTouch(
+		'knob1', {
+			'dragable':true,
+			'scalable':false,
+			'rotatable': false,
+	    	'opacity':false
+		}).init();
+		var knob_user = new WKTouch(
+		'knob_user', {
+			'dragable':false,
+			'scalable':false,
+			'rotatable': true,
+	    	'opacity':false
+		}).init();
+	
+		var knob_user2 = new WKTouch(
+		'knob_user2', {
+			'dragable':false,
+			'scalable':false,
+			'rotatable': true,
+	    	'opacity':false
+		}).init();
+		var knob2 = new WKTouch(
+		'knob2', {
+			'dragable':true,
+			'scalable':false,
+			'rotatable': false,
+	    	'opacity':false
+		}).init();
+		
 
 	
-	var knob_user = new WKTouch(
-	'knob_user', {
-		'dragable':false,
-		'scalable':false,
-		'rotatable': true,
-    	'opacity':false
-	}).init();
-
-	var knob_user2 = new WKTouch(
-	'knob_user2', {
-		'dragable':false,
-		'scalable':false,
-		'rotatable': true,
-    	'opacity':false
-	}).init();
 	
 };
 </script>
@@ -41,30 +54,17 @@ window.onload = function() {
 <body id="wrapper">
 
 	
-	<div class="widget" id="widget3">
-		<div class="touch" id="knob_user"><img src="img/knob_user_512.png" alt="Knob User"></div>
-		<div class="childOfWidget"><img src="img/knob_average_512.png" alt="Knob Average"></div>
-		<div class="childOfWidget"><img src="img/knob_base_512.png"alt="Knob Base"></div>
-	</div>
-	
-	<div class="widget" id="widget4">
-		<div class="touch" id="knob_user2"><img src="img/knob_user_512.png" width="512" height="512" alt="Knob User"></div>
-		<div class="childOfWidget"><img src="img/knob_average_512.png" width="512" height="512" alt="Knob Average"></div>
-		<div class="childOfWidget"><img src="img/knob_base_512.png" width="512" height="512" alt="Knob Base"></div>
-	</div>
-	
+	<div class="knob" id="knob1">
+			<div><img src="img/knob_average_512.png" alt="Knob Average"></div>
+			<div><img src="img/knob_base_512.png"alt="Knob Base"></div>
+			<div class="touch" id="knob_user"><img src="img/knob_user_512.png" alt="Knob User"></div>
+		</div>
+		
+		<div class="knob" id="knob2">	
+			<div><img src="img/knob_average_512.png" alt="Knob Average"></div>
+			<div><img src="img/knob_base_512.png" alt="Knob Base"></div>
+			<div class="touch" id="knob_user2"><img src="img/knob_user_512.png" alt="Knob User"></div>
+		</div>
 
-	
-<script type="text/javascript"> 	
-	//resolu();
-	
-	//resize("widget3", 1);
-	//resize("widget4", 1);
-	//center("knob_user", 200, 200);
-	//rotateElement("knob_average", 150);
-	
-	
-	
-</script>
 </body>
 </html>

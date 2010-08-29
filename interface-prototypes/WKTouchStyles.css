@@ -10,6 +10,16 @@
  * 
  */
 
+/*
+#debug {
+	position: absolute;
+	left: 100px;
+	bottom: 100px;
+	color:#FFF;
+}
+*/
+
+
 body {
 	background-image: url('img/bgEscuro.gif');
 	background-repeat: repeat;
@@ -23,55 +33,68 @@ body {
 	-webkit-touch-callout: none; 
 }
 
-.widget {
+.knob {
+	height:690px; 
+	width:186px;
 	position: absolute;
 	left: 0px;
 	top: 0px;
-	height:500px; 
-	width:500px;
     text-align:center;
 /*    line-height: 120px;*/
     color: white;
-	
 }
-.widget img {
-	height: 500px;
-	width: 500px;
-}
-#widget3 {
+#knob1 {
+	height:300px; 
+	width:300px;
 	left: 0px;
 	top: 0px;
 }
-#widget4 {
+#knob1 img {
+	height: 300px;
+	width: 300px;
+}
+
+
+#knob2 {
+	height:500px; 
+	width:500px;
 	left: 400px;
 	top: 400px;
 }
 
-#debug {
-	position: absolute;
-	left: 100px;
-	bottom: 100px;
-	color:#FFF;
+#knob2 img {
+	height: 500px;
+	width: 500px;
 }
 
-#knob_user {
-	z-index: 3;
+
+
+.slider {
+	height:690px; 
+	width:186px;
 	position: absolute;
 	left: 0px;
-	up: 0px;
-/*	background-color: green;*/
+	top: 0px;
+    text-align:center;
+/*    line-height: 120px;*/
+    color: white;
 }
 
-#knob_user2 {
-	z-index: 3;
-	position: absolute;
-	left: 0px;
-	up: 0px;
-	/*background-color: green;*/
+.slider img {
+	/*height: 300px;*/
+	width: 186px;
 }
-.childOfWidget {
+.knob div {
 	z-index: 1;
 	position: absolute;
 	left: 0px;
-	up: 0px;
+	top: 0px;
 }
+
+.slider div {
+	z-index: 1;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
