@@ -1,0 +1,17 @@
+%p= pubsubJSFile
+%p= pubsubURL
+%p= channel
+%script{ src: pubsubJSFile}
+
+:javascript
+    var client = new Faye.Client('#{pubsubURL}', {
+        timeout: 120
+    });
+    
+    function pub() {
+      client.publish('/#{channel}', {
+        text: 'Hello world'
+      });
+    }
+
+%a{href: "javascript:pub()"} Publish

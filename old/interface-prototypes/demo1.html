@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="WKTouchStyles.css" media="screen"/>
+<script type="text/javascript" src="WKTouch.js"></script>
+<script type="text/javascript"> 
+window.onload = function() {
+    		
+	//prevent default document scrolling
+	document.addEventListener('touchmove', function(e) {	
+		e.preventDefault();
+	}, true);
+			
+	var knob1 = new WKTouch(
+		'knob1', {
+			'dragable':true,
+			'scalable':false,
+			'rotatable': false,
+	    	'opacity':false
+		}).init();
+		var knob_user = new WKTouch(
+		'knob_user', {
+			'dragable':false,
+			'scalable':false,
+			'rotatable': true,
+	    	'opacity':false
+		}).init();
+	
+		var knob_user2 = new WKTouch(
+		'knob_user2', {
+			'dragable':false,
+			'scalable':false,
+			'rotatable': true,
+	    	'opacity':false
+		}).init();
+		var knob2 = new WKTouch(
+		'knob2', {
+			'dragable':true,
+			'scalable':false,
+			'rotatable': false,
+	    	'opacity':false
+		}).init();
+		
+
+	
+	
+};
+</script>
+</head>
+<body id="wrapper">
+
+	
+	<div class="knob" id="knob1">
+			<div><img src="img/knob_average_512.png" alt="Knob Average"></div>
+			<div><img src="img/knob_base_512.png"alt="Knob Base"></div>
+			<div class="touch" id="knob_user"><img src="img/knob_user_512.png" alt="Knob User"></div>
+		</div>
+		
+		<div class="knob" id="knob2">	
+			<div><img src="img/knob_average_512.png" alt="Knob Average"></div>
+			<div><img src="img/knob_base_512.png" alt="Knob Base"></div>
+			<div class="touch" id="knob_user2"><img src="img/knob_user_512.png" alt="Knob User"></div>
+		</div>
+
+</body>
+</html>

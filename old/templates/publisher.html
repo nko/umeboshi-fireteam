@@ -15,9 +15,9 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="text/javascript" src="http://localhost:8000/faye.js"></script>
+  <script type="text/javascript" src="http://192.168.1.100:8000/pubsubhub.js"></script>
   <script type="text/javascript">
-      var client = new Faye.Client('http://localhost:8000/faye', {
+      var client = new Faye.Client('http://192.168.1.100:8000/pubsubhub', {
           timeout: 120
       });
       
@@ -26,12 +26,14 @@
           text: 'Hello world'
         });
       }
-      
+
   </script>
 </head>
 
 <body>
   <h1>Umeboshi Fireteam FTW</h1>
   <a href="javascript:pub()">Publish</a>
+  <div id="channels">
+  </div>
 </body>
 </html>
