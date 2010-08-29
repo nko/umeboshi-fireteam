@@ -58,14 +58,14 @@ app.configure('production', function(){
 });
 
 // Routes
-
-app.get('/', function(req, res){
-	res.render('index.html.haml', {
-	    locals: {
-	        title: 'Umeboshi Fireteam FTW'
-	    }
-	});
-});
+// 
+// app.get('/', function(req, res){
+// 	res.render('index.html.haml', {
+// 	    locals: {
+// 	        title: 'Umeboshi Fireteam FTW'
+// 	    }
+// 	});
+// });
 
 app.get('/channels/new', function(req, res) {
 	var baseURL = utils.baseUrl(req);

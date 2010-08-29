@@ -1,0 +1,55 @@
+/*CSS Reset*/
+body,h1,h2,h3,h4,a,img,div,p,video,ol,li,table,caption,thead,tr,td {margin:0px;padding:0px;border:none;}
+
+body{
+  background-color: #dbdacd;
+}
+
+#header{
+  margin:auto;
+  width:1042px;
+}
+
+#content{
+    background-color:#fff;
+    width:737px;
+    margin:auto;
+  /*  height:360px;*/
+    margin-top:-60px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    -moz-box-shadow: 3px 3px 3px #666;
+    -webkit-box-shadow: 3px 3px 3px #666;
+    box-shadow: 3px 3px 3px #666;
+    padding:2em;
+    font-family: "Trebuchet MS", sans;
+    color:#a0c0d6;
+    position: relative;
+}
+ol{
+  margin-left:3em;
+}
+#content h2{
+  color:#a29a7a;
+}
+#content p{
+  padding:1em;
+}
+hr{
+  border:none;
+  border-top:1px dashed #a19878;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+.ume-ribbon{
+  position: absolute;
+  z-index: 100;
+  right:0px;
+  top:0px;
+}
+a{
+  color:#e8a141;
+  text-decoration:none;
+}
