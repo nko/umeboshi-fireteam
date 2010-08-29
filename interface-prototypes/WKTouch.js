@@ -24,7 +24,8 @@ function WKTouch(node, options) {
 		dragable : false,
 		scalable : false,
 		rotatable : false,
-		opacity : false
+		opacity : false,
+		slider: false
 	}
     
 	// User defined options
@@ -86,14 +87,38 @@ WKTouch.prototype.onTouchStart = function (e) {
         
 WKTouch.prototype.onTouchMove = function (e) {
     e.preventDefault();
+	
+	//elementoPai = this.node.parentNode;
+	//elementoPai.style.top = '0px';
+	teto = 0; //should be elementoPai.top + this.node.top
+	piso = 690-141;
+	valor_escrito = 0;
+	
     //drag event
     if ((e.targetTouches.length === 1) && (this.options.dragable)) {
         //calculate distance
         this.curX = e.targetTouches[0].pageX - this.startX;
         this.curY = e.targetTouches[0].pageY - this.startY;
         //set position
-        this.node.style.left = (this.elementPosX + this.curX) + "px";
-        this.node.style.top = (this.elementPosY + this.curY) + "px";
+        //this.node.style.left = (this.elementPosX + this.curX) + "px";
+		
+		// if (this.options.slider) {
+		// 			
+		// 			valor_lido = this.elementPosY + this.curY;
+		// 			
+		// 			valor_escrito = valor_lido;
+		// 			if (valor_lido < teto) {valor_escrito = teto}
+		// 			if (valor_lido > piso) {valor_escrito = piso}
+		// 			 
+		//         	
+		//         	this.node.style.top = (valor_escrito) + "px";
+		// 			//console.log(valor_escrito);
+		// 		}
+		// 		else{
+	        //set position
+	        this.node.style.left = (this.elementPosX + this.curX) + "px";
+	        this.node.style.top = (this.elementPosY + this.curY) + "px";
+		//}
     }
     else if ((e.targetTouches.length === 2) && ((this.options.scalable) || (this.options.rotatable))) {
         //gesture event
@@ -156,61 +181,3 @@ WKTouch.prototype.onTouchCancel = function (e) {
     }   
 };
 
-
-//get screen resolution
-// function resolu() {
-// 	
-// 	var resolution;
-// 	if(window.innerHeight) {
-// 		resolutionHeight = window.innerHeight;
-// 		resolutionWidth = window.innerWidth;
-// 	}
-// 	else {
-// 		resolutionHeight = document.documentElement.clientHeight;
-// 		resolutionWidth = document.documentElement.clientWidth;
-// 	}
-// 	documento = document.getElementById('wrapper');
-// 	// debuga = document.getElementById('debug');
-// 	// console.log(debuga.innerHTML);
-// 	documento.style.height = resolution;
-// 	// debuga.innerHTML = resolutionWidth + 'dfdf'+ resolutionHeight;
-// 	// console.log(debuga.innerHTML);
-// 	
-// 
-// 	
-// 	return false;
-// }
-
-function resize(element, factor){
-	elemento = document.getElementById(element);
-	//elementoHalfHeight = h; //elementocentral.style.height/2;
-	//elementoHalfWidth = w; //elementocentral.style.width;
-	//console.log(elementoHalfWidth);
-
-	elemento.style.width = ((resolutionWidth/factor))+'px';
-	elemento.style.height = ((resolutionHeight/factor))+'px';
-	
-	//console.log(elementocentral.style.top);
-	
-}
-
-// function center2(element, h, w){
-// 	elementocentral = document.getElementById(element);
-// 	elementoHalfHeight = h; //elementocentral.style.height/2;
-// 	elementoHalfWidth = w; //elementocentral.style.width;
-// 	//console.log(elementoHalfWidth);
-// 
-// 	elementocentral.style.left = ((resolutionWidth/3)-elementoHalfWidth)+'px';
-// 	elementocentral.style.top = ((resolutionHeight/3)-elementoHalfHeight)+'px';
-// 	
-// 	//console.log(elementocentral.style.top);
-// 	
-// }
-
-// function rotateElement(elem, angle) {
-// 	selectedElem = document.getElementById(elem);
-// 	myTransform = "rotate(" + angle + "deg)";
-// 	selectedElem.style.webkitTransform = myTransform;
-// 	//console.log(selectedElem.style.webkitTransform);
-// 	
-// }
