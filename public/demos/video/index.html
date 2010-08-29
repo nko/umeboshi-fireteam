@@ -10,15 +10,23 @@
   
   <div class="ume-group">
     <div class="ume-module" id="video-display">
-      <video width="640" height="360" controls preload autobuffer id="main-video">
-        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-mp424-272.MP4" type="video/mp4" /><!-- WebKit video    -->
-        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-webm24-272.WEBM" type='video/webm; codecs="vp8.0, vorbis"' /> 
-        <source src="http://www.archive.org/download/taboca_201004_04/80434e64104c39a71ab9f37226a78024.mts-ogv24-272.OGV" type="video/ogg" /><!-- Firefox / Opera -->
+      <video width="640" height="360" id="main-video" > <!-- preload autobuffer  -->
+        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" /><!-- WebKit video    -->
+        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type='video/webm; codecs="vp8.0, vorbis"' /> 
+        <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" /><!-- Firefox / Opera -->
       </video>
+    </div>
+    <div id="video-controls">
+      <div id="play-button"><img src="play.png" id="play-image"/></div>
+      <div id="seek-container" >
+        <div id="seek-bar-inside">
+          <div id="loaded-bar"></div>
+          <div id="played-bar"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="ume-ribbon"><img src="sliceMe.png" /></div>
-  <a href="#" id="testlink">Test publishing</a>
   <div style="background-color:#fff;">Playback control URL:<input type="text" style="width:500px;" id="playback-control-url-field" /></div>
 <script src="http://umeboshi-fireteam.no.de:8000/pubsubhub.js"></script>
 <!-- <script src="http://localhost:8000/pubsubhub.js"></script> -->

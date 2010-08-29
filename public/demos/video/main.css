@@ -2,12 +2,13 @@
 body,h1,h2,h3,h4,a,img,div,p,video,ol,li,table,caption,thead,tr,td {margin:0px;padding:0px;border:none;}
 
 body{
-  background-color: #2e2e2e;
+  background-color: #dbdacd;
 }
 
 .ume-group{
   border: 15px solid white;
   width:640px;
+  height:420px;
   position:absolute;
   left:50%;
   top:46%;
@@ -18,14 +19,56 @@ body{
 #video-display{
   width:640px;
   height:360px;
+  background-color:#333;
 }
 
 #video-controls{
   width:640px;
   height:61px;
   background-color:#000;
+  margin-top:-1px;
+  position:absolute;
 }
-
+#video-controls #play-button{
+  background:none;
+  width:66px;
+  height:61px;
+  background-image:url('pause.png');
+  display:block;
+  position: absolute;
+  cursor: pointer;
+}
+#video-controls #play-button #play-image{
+/*  display:none;*/
+}
+#seek-container{
+  width:550px;
+  height:20px;
+  border:1px solid #fff;
+  position:absolute;
+  top:20px;
+  left:65px;
+}
+#seek-container #seek-bar-inside{
+  position:relative;
+  border:none;
+  height:16px;
+  width:546px;
+  top:2px;
+  left:2px;
+}
+#loaded-bar {
+/*  width:15%;*/
+  height:100%;
+  position:absolute;
+  background-color:#262626;
+}
+#played-bar {
+/*  width:5%;*/
+  height:100%;
+  position:absolute;
+  background-color:#fff;
+}
 .ume-ribbon{
   position: absolute;
   z-index: 100;
