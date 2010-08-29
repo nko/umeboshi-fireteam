@@ -5,10 +5,13 @@ body{
   background-color: #dbdacd;
 }
 
+#debug-area{
+  display:none;
+}
 .ume-group{
   border: 15px solid white;
   width:640px;
-  height:420px;
+/*  height:420px;*/
   position:absolute;
   left:50%;
   top:46%;
@@ -27,7 +30,7 @@ body{
   height:61px;
   background-color:#000;
   margin-top:-1px;
-  position:absolute;
+  position:relative;
 }
 #video-controls #play-button{
   background:none;
@@ -76,10 +79,43 @@ body{
   top:0px;
 }
 
-.ume-dashed{
-  height:4px;
-  background-color:white;
-  width:100%;
+#ume-ballon{
+  background-color:#fff;
+  width:280px;
+/*  height:360px;*/
   position:absolute;
-  z-index:30;
+  right:25px;
+  top:10px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  -o-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
+  -moz-box-shadow: 3px 3px 3px #666;
+  -webkit-box-shadow: 3px 3px 3px #666;
+  box-shadow: 3px 3px 3px #666;
+  padding:2em;
+  font-family: "Trebuchet MS", sans;
+}
+#ume-ballon hr{
+  border:1px dashed #a19878;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+#ume-ballon p{
+  color:#a19878;
+  font-size:14px;
+}
+#ume-ballon h2{
+  font-size:14px;
+  font-weight:bold;
+}
+#ume-ballon p .requirement{
+  color:#ec6a64;
+}
+#ume-ballon p a{
+  color:#e8a141;
+  text-decoration:none;
+}
+#ume-ballon p .module-link{
+  color:#a0c0d6;
 }

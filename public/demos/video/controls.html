@@ -7,7 +7,16 @@
 </head>
 
 <body onload="init()">
-  <textarea id="debug-area"></textarea>
+  <textarea id="debug-area" style="width:500px;height:500px;"></textarea>
+  <div id="video-controls">
+    <div id="play-button"><img src="play.png" id="play-image" style="display:block;"/></div>
+    <div id="seek-container" >
+      <div id="seek-bar-inside">
+        <div id="loaded-bar"></div>
+        <div id="played-bar"></div>
+      </div>
+    </div>
+  </div>
 <script src="http://umeboshi-fireteam.no.de:8000/pubsubhub.js"></script>
 <script src="controls.js"></script>
 </body>
