@@ -9,7 +9,10 @@
  * Version 1.0 - Last updated: March 03 2010
  * 
  */
- 
+ * {
+	margin: 0px;
+	padding: 0px;
+}
 .touch {
 	-webkit-user-select: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -44,7 +47,7 @@
 #element3 {
 	position: absolute;
 	left: 0px;
-	up: 326px;
+	up: 0px;
 	height:400px; 
 	width:400px;
     text-align:center;
@@ -68,4 +71,29 @@
 	position: absolute;
 	left: 100px;
 	bottom: 100px;
+}
+
+#element3 #knob_average {
+	z-index: 2;
+	position: absolute;
+	left: 0px;
+	up: 0px;
+	/*background-color: blue;*/
+	height:400px; 
+	width:400px;
+}
+#element3 #knob_user {
+	z-index: 3;
+	position: absolute;
+	left: 0px;
+	up: 0px;
+	/*background-color: green;*/
+	height:400px; 
+	width:400px;
+}
+#element3 #knob_base {
+	z-index: 1;
+	position: absolute;
+	left: 0px;
+	up: 0px;
 }

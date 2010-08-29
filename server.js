@@ -7,8 +7,8 @@ var  http = require('http')
 
 //global variables
 var  hosted_on_joyent = /\/home\/node\/node\-service\/releases\/[^\/]*\/server.js/.test(__filename)
-    ,WEBSERVER_PORT = hosted_on_joyent ? 80 : 8082
-    ,SOCKET_SERVER_PORT = 8080
+    ,WEBSERVER_PORT = hosted_on_joyent ? 80 : 8080
+    ,CHANNEL_STARTING_PORT = 8081
     ,BLURB_SIZE = hosted_on_joyent ? 7 : 1
     ,BLURB_CHARS = "abcdefghijklmnopqrstuvxywz"    
     ,channels = {}
@@ -23,11 +23,11 @@ console.log(WEBSERVER_PORT);
 
 var webserver = http.createServer(function (req, res) {
   var path = url.parse(req.url).pathname;
-  console.log('path 2: %s', path)
+  console.log('WebServer was requested to provide ', path)
   for (i=0;i<url_mapping.length;i++){
     var map = url_mapping[i];
     if (map.url.test(path)){
-      map.view(res, path, map.url);
+      map.view(req, res, path, map.url);
       break;
     }
   }
@@ -35,65 +35,34 @@ var webserver = http.createServer(function (req, res) {
 
 webserver.listen(WEBSERVER_PORT);
 
-var socket_server = http.createServer(function (req, res) {
-  console.log(res);
-  }
-);
-buffer = [];
-
-socket_server.listen(SOCKET_SERVER_PORT);
-
 //views
-function newChannel(res, path, pattern){
-  var fmt = (pattern.exec(path)[2])?pattern.exec(path)[2]:'txt';
+function newChannel(req, res, path, pattern){
+	console.log(baseURL(req))
   var blurb = generateBlurb();
-  createChannel(blurb)
-  switch(fmt){
-    case '.json':
-      console.log('JSON TBD')
-      res.writeHead(200, { "Content-Type": "application/json" })
-      res.end('');
-      break;
-    case '.txt':
-    default:
-      res.writeHead(200, { "Content-Type": "text/html" })
-      res.end('your blurb is <a href="/'+blurb+'">'+blurb+'</a>');
-      break;
-  }
-  return true;
+  channels[blurb] = new Channel(CHANNEL_STARTING_PORT++);
+	console.log("New Channel: "+blurb);
+  res.writeHead(200, { "Content-Type": "text/plain" })
+  res.end("your blurb is "+blurb);
+  return;
 }
 
-function joinChannel(res, path, pattern){
-  console.log('path 3: %s', path)
-  
-  var fmt = (pattern.exec(path)[2])?pattern.exec(path)[2]:'txt';
+function joinChannel(req, res, path, pattern){
+	
+  console.log('Join Channel: %s', path)
   var blurb = pattern.exec(path)[1].replace('/', '')
   console.log(blurb)
-  var path = '/chat.html'
-  if (channels[blurb]) {
-    switch(fmt){
-      case '.json':
-        break;
-      case '.txt':
-      default:
-        defaultView(res, path, pattern);
-        break;
-    }
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" })
-    res.end("blurb not found");
-    return false;
-  }
+  var channelPort = channels[blurb].port
+	console.log(baseURL(req))
+	res.writeHead(302, {
+		'Location':'http://'+baseURL(req)+':'+channelPort+'/chat.html'
+	});
+	res.end();
 }
 
-function defaultView(res, path, pattern){
-  console.log('default view')
-  console.log('path 4: %s', path)
-  
+function defaultView(req, res, path, pattern){
+	console.log(baseURL(req))  
   path = (path == '/') ? '/templates/index.html' : '/lib/socket.io-node/example' + path;
-  console.log('path 5: %s', path)
   if (/\.(js|html|swf|ico|png)$/.test(path)){
-    console.log('path 6: %s', path)
     try {
       var swf = path.substr(-4) === '.swf';
       res.writeHead(200, {'Content-Type': swf ? 'application/x-shockwave-flash' : ('text/' + (path.substr(-3) === '.js' ? 'javascript' : 'html'))});
@@ -111,28 +80,6 @@ function defaultView(res, path, pattern){
  return false;
 }
 
-function createChannel(blurb){
-  channels[blurb] = io.listen(socket_server);
-  
-  channels[blurb].on('connection', function(client){
-    client.send({ buffer: buffer });
-    client.broadcast({ announcement: client.sessionId + ' connected' });
-    
-    // new client is here!
-    client.on('message', function(message){ 
-      console.log('message from %s', client.sessionId)
-      var msg = { message: [client.sessionId, message] };
-  		buffer.push(msg);
-  		if (buffer.length > 15) buffer.shift();
-  		client.broadcast(msg);
-    });
-    client.on('disconnect', function(){ 
-      console.log('%s disconnected', client.sessionId)
-    });
-    // client.broadcast({ announcement: client.sessionId + ' connected' });
-  });
-}
-
 function generateBlurb(){
   var blurb = '';
   for (i=0;i<BLURB_SIZE;i++){
@@ -141,11 +88,57 @@ function generateBlurb(){
   return blurb;
 }
 
-// helpers
- 
-function send404(res){
-  console.log('not found');
-  res.writeHead(404);
-  res.write('404');
-  res.end();
+baseURL = function(req) {
+	return req.headers['host'].split(":")[0];
+}
+
+Channel = function(port) {
+	this.port = port;
+	server = createChannel();
+	server.listen(port);
+	bindEventHandlers(server);
+	
+	function createChannel() {
+		return http.createServer(function(req, res){
+		  var path = url.parse(req.url).pathname;
+			try {
+				path = '/lib/socket.io-node/example' + path
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				fs.readFile(__dirname + path, 'utf8', function(err, data){
+					if (!err) res.write(data, 'utf8');
+					res.end();
+				});
+			} catch(e){ 
+				send404(res); 
+			}
+		});
+	}
+
+	function bindEventHandlers(server) {
+		var socketIO = require('./lib/socket.io-node/lib/socket.io');
+		var io = socketIO.listen(server),
+		    buffer = [];
+
+		io.on('connection', function(client){
+		  client.send({ buffer: buffer });
+		  client.broadcast({ announcement: client.sessionId + ' connected' });
+
+		  client.on('message', function(message){
+		    var msg = { message: [client.sessionId, message] };
+		    buffer.push(msg);
+		    if (buffer.length > 15) buffer.shift();
+		    client.broadcast(msg);
+		  });
+
+		  client.on('disconnect', function(){
+		    client.broadcast({ announcement: client.sessionId + ' disconnected' });
+		  });
+		});
+	}
+	
+	send404 = function(res){
+	  res.writeHead(404);
+	  res.write('404');
+	  res.end();
+	}
 }
