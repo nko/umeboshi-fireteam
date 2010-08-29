@@ -70,11 +70,16 @@ app.get('/', function(req, res){
 app.get('/channels/new', function(req, res) {
 	var baseURL = utils.baseUrl(req);
   var blurb = utils.generateBlurb();
-	var channelURL = utils.getPubSubServerURL(req)+"/"+blurb;
+	pubsubURL = utils.getPubSubServerURL(req);
+	var channelURL = pubsubURL+"/"+blurb;
 	channels[blurb] = channelURL;
+	jsFile = pubsubURL+".js"
 	res.render('channels/new_channel.html.haml', {
 		locals: {
-			channel: channelURL
+			channelURL: channelURL
+			,pubsubJSFile: jsFile
+			,channelName: blurb
+			,pubsubURL: pubsubURL
 		}
 	});
 });
