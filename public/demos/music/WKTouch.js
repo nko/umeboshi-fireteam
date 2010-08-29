@@ -109,6 +109,7 @@ WKTouch.prototype.onTouchMove = function (e) {
 							if (valor_lido < teto) {valor_escrito = teto}
 							if (valor_lido > piso) {valor_escrito = piso}
 							 
+							pubTest(valor_escrito,this.node.id);
 				        	
 				        	this.node.style.top = (valor_escrito) + "px";
 							//console.log(valor_escrito);

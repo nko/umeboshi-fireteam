@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="player-style.css" media="screen"/>
+
+<script src="http://umeboshi-fireteam.no.de:8000/pubsubhub.js"></script>
+
+
+<script type="text/javascript"> 
+
+function playPause(elemento) {
+	player = document.getElementById(elemento);
+	if (player.paused) {
+		player.play();
+	}
+	else {
+		player.pause();
+	}
+}
+
+function changeVolume(elemento, valor) {
+	player = document.getElementById(elemento);
+	player.volume = valor; 
+	console.log(player.volume+' '+valor);
+	
+}
+
+</script>
+</head>
+<body id="wrapper" onload="init()">
+	
+	<audio id="slider_user1" src="../audio/02-Reckoner-Backing-Vocals-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user2" src="../audio/02-Reckoner-Bass-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user3" src="../audio/02-Reckoner-Drums_Percussion-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user4" src="../audio/02-Reckoner-Guitars-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user5" src="../audio/02-Reckoner-Lead-Vocal-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user6" src="../audio/02-Reckoner-Piano_Strings-Stem.mp3" autoplay loop ></audio>
+	<audio id="slider_user7" src="" autoplay loop ></audio>
+	
+	<script src="http://umeboshi-fireteam.no.de:8000/pubsubhub.js"></script>
+	<script src="audio-player.js"></script>
+
+</body>
+</html>
