@@ -8,7 +8,7 @@ padding:0;
 vertical-align:baseline;
 }
 body {
-background-color:#009999;
+background-color:#dbdacd;
 font:20px/1 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 }
 ol, ul {
@@ -61,8 +61,11 @@ font-weight:400;
 line-height:1em;
 padding:5px;
 }
+.text {
+	font-size: 70%;
+}
 .title {
-color:#000000;
+color:#dbdacd;
 padding:5px 0;
 }
 .owner {
