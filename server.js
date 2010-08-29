@@ -74,14 +74,22 @@ app.get('/channels/new', function(req, res) {
 	var channelURL = pubsubURL+"/"+blurb;
 	channels[blurb] = channelURL;
 	jsFile = pubsubURL+".js"
-	res.render('channels/new_channel.html.haml', {
-		locals: {
-			channelURL: channelURL
-			,pubsubJSFile: jsFile
-			,channelName: blurb
-			,pubsubURL: pubsubURL
-		}
-	});
+	if (req.query.fmt == 'json') {
+    res.writeHead(200, { "Content-Type": "application/json" })
+    // res.writeHead(200, { "Content-Type": "text/plain" })
+    var output = JSON.stringify({ 'channel_key': blurb });
+    if (req.query.callback) output = req.query.callback + '('+output+')';//JSONP
+    res.end(output);
+	} else{
+  	res.render('channels/new_channel.html.haml', {
+  		locals: {
+  			channelURL: channelURL
+  			,pubsubJSFile: jsFile
+  			,channelName: blurb
+  			,pubsubURL: pubsubURL
+  		}
+  	});
+	}
 });
 
 app.get('/channels/info/:id', function(req, res) {
