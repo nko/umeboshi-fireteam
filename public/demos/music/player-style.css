@@ -1,32 +1,20 @@
-
+body,h1,h2,h3,h4,a,img,div,p,video,ol,li,table,caption,thead,tr,td,br
+{margin:0px;padding:0px;border:none;}
 
 body {
 	background-image: url('../../images/bgEscuro.gif');
 	background-repeat: repeat;
-	margin: 0px;
+	
+}
+
+#container {
+	width: 700px;
+	margin: 0 auto;	
+	float: none;
 }
 
 .slider-container {
-	height:787px; 
-	width:186px;
+	height:300px; 
+	width:100px;
 	float: left;
-	display: block;
-}
-.slider {
-	height:690px; 
-	width:186px;
-    text-align:center;
-	background-image: url('../../images/slider_base_690.png');
-	clear:both;
-	float: left;
-	display: block;
-}
-.slider-footer {
-	width:97px;
-	height:97px;
-	text-align: center;
-	clear:both;
-	float: none;
-	margin: 0px auto;
-	display: block;
 }

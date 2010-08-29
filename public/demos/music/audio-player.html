@@ -26,16 +26,26 @@ function changeVolume(elemento, valor) {
 	player = document.getElementById(elemento);
 	player.volume = valor; 
 	console.log(player.volume+' '+valor);
+	escala = document.getElementById("saber-"+elemento);
+	//console.log(escala);
+	escala.style.height = (valor*100)+"px";
+	console.log(escala.style.height);
 }
 
 </script>
 </head>
 <body id="wrapper" onload="init()">
+	<div id="container">
+		<div class="slider-container" id="saber-slider_user1" style="background-color: #cd2836; "></div>
+		<div class="slider-container" id="saber-slider_user2" style="background-color: #cc5929; "></div>	
+		<div class="slider-container" id="saber-slider_user3" style="background-color: #cdc928; "></div>
+		<div class="slider-container" id="saber-slider_user4" style="background-color: #41cd2a; "></div>
+		<div class="slider-container" id="saber-slider_user5" style="background-color: #2dc4cc; "></div>
+		<div class="slider-container" id="saber-slider_user6" style="background-color: #285dcd; "></div>
+		<div class="slider-container" id="saber-slider_user7" style="background-color: #5828cd; "></div>
 	
-	<div class="slider-container"><div class="slider"></div><div class="slider-footer"><img src="../../images/backingVocals.png" width="97" height="97" alt="BackingVocals"></div></div>
-	
-	
-	
+	</div>
+
 	<!-- Audio Content -->
 	<audio id="slider_user1" src="../../audio/02-Reckoner-Backing-Vocals-Stem.mp3" autoplay loop ></audio>
 	<audio id="slider_user2" src="../../audio/02-Reckoner-Bass-Stem.mp3" autoplay loop ></audio>
