@@ -17,55 +17,51 @@ window.onload = function() {
 			
 	//first instance
 	//var element1 = new WKTouch('element1').init();
-	
-	//second instance
-	//var element2 = new WKTouch('element2').init();
 
-	//third instance
-	//var element3 = new WKTouch('element3').init();
-
-	//fourth instance
-	//var element4 = new WKTouch('element4').init();
 	
-	/*you can also define optional parameters, like so*/
-	var element3 = new WKTouch(
-			'element3', {
-				'dragable':true,
-				'scalable':false,
-				'rotatable': false,
-		    	'opacity':false
-			}).init();
-	
-	var knobuser = new WKTouch(
+	var knob_user = new WKTouch(
 	'knob_user', {
 		'dragable':false,
 		'scalable':false,
 		'rotatable': true,
-    	'opacity':true
+    	'opacity':false
 	}).init();
+
+	var knob_user2 = new WKTouch(
+	'knob_user2', {
+		'dragable':false,
+		'scalable':false,
+		'rotatable': true,
+    	'opacity':false
+	}).init();
+	
 };
 </script>
 </head>
 <body id="wrapper">
-	<!-- <div class="touch" id="element1"></div> -->
-	<!-- <div class="touch" id="element2"></div> -->
+
 	
-	<div class="touch" id="element3">
-		<div class="touch" id="knob_user"><img src="img/knob_user.png" width="400" height="400" alt="Knob User"></div>
-		<div id="knob_average"><img src="img/knob_average.png" width="400" height="400" alt="Knob Average"></div>
-		
-		<div id="knob_base"><img src="img/knob_base.png" width="400" height="400" alt="Knob Base"></div>
+	<div class="widget" id="widget3">
+		<div class="touch" id="knob_user"><img src="img/knob_user_512.png" alt="Knob User"></div>
+		<div class="childOfWidget"><img src="img/knob_average_512.png" alt="Knob Average"></div>
+		<div class="childOfWidget"><img src="img/knob_base_512.png"alt="Knob Base"></div>
 	</div>
 	
-	<!-- <div class="touch" id="element4"></div> -->
-	<!-- <div id="debug">test</div> -->
+	<div class="widget" id="widget4">
+		<div class="touch" id="knob_user2"><img src="img/knob_user_512.png" width="512" height="512" alt="Knob User"></div>
+		<div class="childOfWidget"><img src="img/knob_average_512.png" width="512" height="512" alt="Knob Average"></div>
+		<div class="childOfWidget"><img src="img/knob_base_512.png" width="512" height="512" alt="Knob Base"></div>
+	</div>
 	
+
 	
 <script type="text/javascript"> 	
-	resolu();
+	//resolu();
 	
-	center("element3", 200, 200);
+	//resize("widget3", 1);
+	//resize("widget4", 1);
 	//center("knob_user", 200, 200);
+	//rotateElement("knob_average", 150);
 	
 	
 	

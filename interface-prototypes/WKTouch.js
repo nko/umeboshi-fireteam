@@ -158,38 +158,59 @@ WKTouch.prototype.onTouchCancel = function (e) {
 
 
 //get screen resolution
-function resolu() {
-	
-	var resolution;
-	if(window.innerHeight) {
-		resolutionHeight = window.innerHeight;
-		resolutionWidth = window.innerWidth;
-	}
-	else {
-		resolutionHeight = document.documentElement.clientHeight;
-		resolutionWidth = document.documentElement.clientWidth;
-	}
-	documento = document.getElementById('wrapper');
-	// debuga = document.getElementById('debug');
-	// console.log(debuga.innerHTML);
-	documento.style.height = resolution;
-	// debuga.innerHTML = resolutionWidth + 'dfdf'+ resolutionHeight;
-	// console.log(debuga.innerHTML);
-	
+// function resolu() {
+// 	
+// 	var resolution;
+// 	if(window.innerHeight) {
+// 		resolutionHeight = window.innerHeight;
+// 		resolutionWidth = window.innerWidth;
+// 	}
+// 	else {
+// 		resolutionHeight = document.documentElement.clientHeight;
+// 		resolutionWidth = document.documentElement.clientWidth;
+// 	}
+// 	documento = document.getElementById('wrapper');
+// 	// debuga = document.getElementById('debug');
+// 	// console.log(debuga.innerHTML);
+// 	documento.style.height = resolution;
+// 	// debuga.innerHTML = resolutionWidth + 'dfdf'+ resolutionHeight;
+// 	// console.log(debuga.innerHTML);
+// 	
+// 
+// 	
+// 	return false;
+// }
 
-	
-	return false;
-}
-
-function center(element, h, w){
-	elementocentral = document.getElementById(element);
-	elementoHalfHeight = h; //elementocentral.style.height/2;
-	elementoHalfWidth = w; //elementocentral.style.width;
+function resize(element, factor){
+	elemento = document.getElementById(element);
+	//elementoHalfHeight = h; //elementocentral.style.height/2;
+	//elementoHalfWidth = w; //elementocentral.style.width;
 	//console.log(elementoHalfWidth);
 
-	elementocentral.style.left = ((resolutionWidth/3)-elementoHalfWidth)+'px';
-	elementocentral.style.top = ((resolutionHeight/3)-elementoHalfHeight)+'px';
+	elemento.style.width = ((resolutionWidth/factor))+'px';
+	elemento.style.height = ((resolutionHeight/factor))+'px';
 	
 	//console.log(elementocentral.style.top);
 	
 }
+
+// function center2(element, h, w){
+// 	elementocentral = document.getElementById(element);
+// 	elementoHalfHeight = h; //elementocentral.style.height/2;
+// 	elementoHalfWidth = w; //elementocentral.style.width;
+// 	//console.log(elementoHalfWidth);
+// 
+// 	elementocentral.style.left = ((resolutionWidth/3)-elementoHalfWidth)+'px';
+// 	elementocentral.style.top = ((resolutionHeight/3)-elementoHalfHeight)+'px';
+// 	
+// 	//console.log(elementocentral.style.top);
+// 	
+// }
+
+// function rotateElement(elem, angle) {
+// 	selectedElem = document.getElementById(elem);
+// 	myTransform = "rotate(" + angle + "deg)";
+// 	selectedElem.style.webkitTransform = myTransform;
+// 	//console.log(selectedElem.style.webkitTransform);
+// 	
+// }
