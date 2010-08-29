@@ -1,6 +1,9 @@
 var express = require('express'),
     connect = require('connect'),
-		faye = require('./lib/faye-0.5.2/faye-node.js')
+		faye = require('faye')
+
+var  HOSTED_ON_JOYENT = /\/home\/node\/node\-service\/releases\/[^\/]*\/server.js/.test(__filename)
+    ,WEBSERVER_PORT = HOSTED_ON_JOYENT ? 80 : 8080
 
 // Utilities
 Utils = function() {
@@ -25,6 +28,13 @@ Utils = function() {
  }
 utils = new Utils();
 
+// PubSub Server
+server = new Faye.NodeAdapter({mount: '/pubsubhub'});
+server.listen(8000);
+
+console.log("PubSub running at 8000")
+ 
+// Express App
 channels = {};
 
 // Express setup
@@ -97,8 +107,6 @@ app.get('/demo/publisher/:id', function(req, res){
 	})
 }); 
 
-// Only listen on $ node app.js
-var  HOSTED_ON_JOYENT = /\/home\/node\/node\-service\/releases\/[^\/]*\/server.js/.test(__filename)
-    ,WEBSERVER_PORT = HOSTED_ON_JOYENT ? 80 : 8080
-
 if (!module.parent) app.listen(WEBSERVER_PORT);
+
+console.log("Express application running at "+WEBSERVER_PORT);
