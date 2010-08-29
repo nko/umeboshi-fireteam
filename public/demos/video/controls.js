@@ -1,7 +1,7 @@
 var  channel_key
     ,pubsub_client
     ,pubsub_server_url = 'umeboshi-fireteam.no.de:8000'
-    ,http_server_url = 'umeboshi-fireteam.no.de:8080';
+    ,http_server_url = 'umeboshi-fireteam.no.de';
 
 function init(){
   var querystring = window.location.search
