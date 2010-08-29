@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="../stylesheets/player-style.css" media="screen"/>
+<script type="text/javascript"> 
+
+function playPause(elemento) {
+	player = document.getElementById(elemento);
+	if (player.paused) {
+		player.play();
+	}
+	else {
+		player.pause();
+	}
+}
+
+function changeVolume(elemento, valor) {
+	player = document.getElementById(elemento);
+	player.volume = valor; 
+	console.log(player.volume+' '+valor);
+	
+}
+
+window.onload = function() {
+    
+	
+};
+</script>
+</head>
+<body id="wrapper">
+	
+	<div id="clickme" onClick="playPause('channel1');">Clique-me</div>
+	<div id="volume" style="color:white;">
+		<a href="#" onclick="changeVolume('channel1',0.0)">0</a> / <a href="#" onclick="changeVolume('channel1',0.5)">0.5</a> / <a href="#" onclick="changeVolume('channel1',1.0)">1</a>
+	</div>
+	
+
+	<audio id="channel1" src="../audio/02-Reckoner-Backing-Vocals-Stem.mp3" autoplay loop ></audio>
+	<audio id="channel2" src="../audio/02-Reckoner-Bass-Stem.mp3" autoplay loop ></audio>
+	<audio id="channel3" src="../audio/02-Reckoner-Drums_Percussion-Stem.mp3" autoplay loop ></audio>
+	<audio id="channel4" src="../audio/02-Reckoner-Guitars-Stem.mp3" autoplay loop ></audio>
+	<audio id="channel5" src="../audio/02-Reckoner-Lead-Vocal-Stem.mp3" autoplay loop ></audio>
+	<audio id="channel6" src="../audio/02-Reckoner-Piano_Strings-Stem.mp3" autoplay loop ></audio>
+	
+
+
+</body>
+</html>
