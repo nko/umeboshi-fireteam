@@ -27,6 +27,7 @@ body{
     font-family: "Trebuchet MS", sans;
     color:#a0c0d6;
     position: relative;
+    margin-bottom:100px;
 }
 ol{
   margin-left:3em;
